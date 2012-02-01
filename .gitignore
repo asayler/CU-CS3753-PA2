@@ -4,6 +4,7 @@
 *.swp
 
 #Build Files#
+lookup
 *.o
 
 #Output Files#
