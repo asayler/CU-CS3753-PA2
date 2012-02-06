@@ -56,13 +56,12 @@ int main(int argc, char* argv[]){
 	/* Lookup hostname and get IP string */
 	if(dnslookup(hostname, firstipstr, sizeof(firstipstr))
 	   == UTIL_FAILURE){
-	    fprintf(stderr, "dnslookup error\n");
-	    return EXIT_FAILURE;
+	    fprintf(stderr, "dnslookup error: %s\n", hostname);
+	    strncpy(firstipstr, "", sizeof(firstipstr));
    	}
 	
 	/* Write to Output File */
 	fprintf(outputfp, "%s,%s\n", hostname, firstipstr);
-
     }
 
     /* Close Files */

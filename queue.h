@@ -17,16 +17,16 @@
 
 #include <stdio.h>
 
-#define QUEUEMAXSIZE	50
+#define QUEUEMAXSIZE 50
 
 #define QUEUE_FAILURE -1
 #define QUEUE_SUCCESS 0
 
-typedef struct queue_node_s {
+typedef struct queue_node_s{
     void* payload;
 } queue_node;
 
-typedef struct queue_s {
+typedef struct queue_s{
     queue_node* array;
     int front;
     int rear;
@@ -61,7 +61,7 @@ int queue_push(queue* q, void* payload);
  */
 void* queue_pop(queue* q);
 
-/* Function to free queu memory */
+/* Function to free queue memory */
 void queue_cleanup(queue* q);
 
 #endif
