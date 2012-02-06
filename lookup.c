@@ -8,8 +8,6 @@
 
 #include "util.h"
 
-#define DEBUG 1
-
 #define MINARGS 3
 #define USAGE "<inputFilePath> <outputFilePath>"
 #define SBUFSIZE 1025
