@@ -1,5 +1,14 @@
-/* Basic Non-Threaded Solution */
-/* By Andy Sayler */
+/*
+ * File: lookup.c
+ * Author: Andy Sayler
+ * Project: CSCI 3753 Programming Assignment 2
+ * Create Date: 2012/02/01
+ * Modify Date: 2012/02/01
+ * Description:
+ * 	This file contains the reference non-threaded
+ *      solution to this assignment.
+ *  
+ */
 
 #include <stdlib.h>
 #include <stdio.h>
