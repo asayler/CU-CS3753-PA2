@@ -4,5 +4,13 @@ University of Colorado Boulder
 Programming Assignment 2
 Public Code
 
-By Andy Sayler
+By Andy Sayler - 2012
 http://www.andysayler.com
+
+Adopted from previous code by
+ Chris Wailes <chris.wailes@gmail.com> - 2010
+ Wei-Te Chen <weite.chen@colorado.edu> - 2011
+
+Executables:
+lookup - A basic non-threaded DNS query-er
+queueTest - Unit test program for queue
