@@ -27,4 +27,4 @@ Clean:
 make clean
 
 Lookup DNS info for all names files in input folder:
-./looup input/names*.txt results.txt
+./lookup input/names*.txt results.txt
