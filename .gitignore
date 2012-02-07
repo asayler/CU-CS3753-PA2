@@ -9,3 +9,7 @@ lookup
 
 #Output Files#
 output.txt
+
+#LaTeX Cruf#
+handout/*.log
+handout/*.aux
