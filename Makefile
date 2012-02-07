@@ -28,3 +28,4 @@ clean:
 	rm -f lookup queueTest
 	rm -f *.o
 	rm -f *~
+	rm -f results.txt

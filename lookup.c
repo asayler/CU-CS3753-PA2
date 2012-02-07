@@ -28,8 +28,10 @@ int main(int argc, char* argv[]){
     FILE* inputfp = NULL;
     FILE* outputfp = NULL;
     char hostname[SBUFSIZE];
+    char errorstr[SBUFSIZE];
     char firstipstr[INET6_ADDRSTRLEN];
-        
+    int i;
+    
     /* Check Arguments */
     if(argc < MINARGS){
 	fprintf(stderr, "Not enough arguments: %d\n", (argc - 1));
@@ -37,35 +39,43 @@ int main(int argc, char* argv[]){
 	return EXIT_FAILURE;
     }
 
-    /* Open Files */
-    inputfp = fopen(argv[1], "r");
-    if(!inputfp){
-	perror("Error Opening Input File");
-	return EXIT_FAILURE;
-    }
-    
-    outputfp = fopen(argv[2], "w");
+    /* Open Output File */
+    outputfp = fopen(argv[(argc-1)], "w");
     if(!outputfp){
 	perror("Error Opening Output File");
 	return EXIT_FAILURE;
     }
 
-    /* Read File and Process*/
-    while(fscanf(inputfp, INPUTFS, hostname) > 0){
+    /* Loop Through Input Files */
+    for(i=1; i<(argc-1); i++){
 	
-	/* Lookup hostname and get IP string */
-	if(dnslookup(hostname, firstipstr, sizeof(firstipstr))
-	   == UTIL_FAILURE){
-	    fprintf(stderr, "dnslookup error: %s\n", hostname);
-	    strncpy(firstipstr, "", sizeof(firstipstr));
-   	}
+	/* Open Input File */
+	inputfp = fopen(argv[i], "r");
+	if(!inputfp){
+	    sprintf(errorstr, "Error Opening Input File: %s", argv[i]);
+	    perror(errorstr);
+	    break;
+	}	
+
+	/* Read File and Process*/
+	while(fscanf(inputfp, INPUTFS, hostname) > 0){
 	
-	/* Write to Output File */
-	fprintf(outputfp, "%s,%s\n", hostname, firstipstr);
+	    /* Lookup hostname and get IP string */
+	    if(dnslookup(hostname, firstipstr, sizeof(firstipstr))
+	       == UTIL_FAILURE){
+		fprintf(stderr, "dnslookup error: %s\n", hostname);
+		strncpy(firstipstr, "", sizeof(firstipstr));
+	    }
+	
+	    /* Write to Output File */
+	    fprintf(outputfp, "%s,%s\n", hostname, firstipstr);
+	}
+
+	/* Close Input File */
+	fclose(inputfp);
     }
 
-    /* Close Files */
-    fclose(inputfp);
+    /* Close Output File */
     fclose(outputfp);
 
     return EXIT_SUCCESS;
