@@ -4,7 +4,7 @@
  *   A "hello world" Pthreads program.  Demonstrates thread creation and
  *   termination.
  * AUTHOR: Blaise Barney, Junho Ahn, Andy Sayler
- * LAST REVISED: 02/06/12
+ * LAST REVISED: 02/08/12
  ******************************************************************************/
 
 #include <pthread.h>

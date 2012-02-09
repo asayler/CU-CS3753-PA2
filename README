@@ -7,9 +7,13 @@ Public Code
 By Andy Sayler - 2012
 http://www.andysayler.com
 
+With help from:
+Junho Ahn - 2012
+
 Adopted from previous code by
  Chris Wailes <chris.wailes@gmail.com> - 2010
  Wei-Te Chen <weite.chen@colorado.edu> - 2011
+ Blaise Barney - pthread-hello.c
 
 ---Folders---
 input - names*.txt input files
@@ -18,13 +22,20 @@ handout - Assignment description and documentation
 ---Executables---
 lookup - A basic non-threaded DNS query-er
 queueTest - Unit test program for queue
+pthread-hello ; A simple threaded "Hello World" program
 
 ---Examples---
 Build:
-make
+ make
 
 Clean:
-make clean
+ make clean
 
 Lookup DNS info for all names files in input folder:
-./looup input/names*.txt results.txt
+ ./lookup input/names*.txt results.txt
+
+Check queue for memory leaks:
+ valgrind ./queueTest
+
+Run pthread-hello
+ ./pthread-hello
